@@ -6,7 +6,7 @@ export function Footer() {
       <div className="container py-10 md:py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">EZTWITCH</h3>
+            <h3 className="text-lg font-semibold">Creativ Connect</h3>
             <p className="text-sm text-muted-foreground">
               La plateforme pour les créateurs de contenu visuel et sonore.
             </p>

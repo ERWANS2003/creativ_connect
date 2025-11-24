@@ -63,6 +63,8 @@ model User {
   skills        Skill[]
   socialLinks   SocialLink[]
   portfolioItems PortfolioItem[]
+  sentMessages  Message[]  @relation("SentMessages")
+  conversations ConversationParticipant[]
 
   @@map("users")
 }

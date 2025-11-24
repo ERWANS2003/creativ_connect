@@ -1,7 +1,7 @@
--- Script pour créer la base de données EZTWITCH
+-- Script pour créer la base de données CREATIV_CONNECT
 -- Exécutez ce script dans pgAdmin ou psql
 
-CREATE DATABASE eztwitch;
+CREATE DATABASE creativ_connect;
 
 -- Si vous voulez vérifier que la base existe :
 -- \l

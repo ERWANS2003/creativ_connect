@@ -1,6 +1,6 @@
 # Guide de Déploiement - EZTWITCH
 
-Ce guide vous accompagne dans le déploiement de l'application EZTWITCH sur différentes plateformes.
+Ce guide vous accompagne dans le déploiement de l'application Creativ Connect sur différentes plateformes.
 
 ## 📋 Préparation
 
@@ -45,17 +45,20 @@ Vercel est la plateforme idéale pour Next.js avec déploiement automatique.
 2. **Connecter votre repository GitHub/GitLab**
 
 3. **Configurer le projet** :
+
    - Framework Preset : Next.js
    - Build Command : `npm run build` (automatique)
    - Output Directory : `.next` (automatique)
    - Install Command : `npm install`
 
 4. **Ajouter les variables d'environnement** dans les paramètres du projet :
+
    - `DATABASE_URL`
    - `NEXTAUTH_URL` (votre URL Vercel)
    - `NEXTAUTH_SECRET`
 
 5. **Configurer PostgreSQL** :
+
    - Utilisez Vercel Postgres ou une base externe (Supabase, Neon, etc.)
    - Ajoutez l'URL dans `DATABASE_URL`
 
@@ -77,20 +80,23 @@ Render offre un hébergement simple avec base de données PostgreSQL intégrée.
 1. **Créer un compte Render** : [render.com](https://render.com)
 
 2. **Créer une base de données PostgreSQL** :
+
    - New > PostgreSQL
    - Notez l'URL de connexion interne
 
 3. **Créer un Web Service** :
+
    - New > Web Service
    - Connecter votre repository
    - Configuration :
-     - **Name** : eztwitch
+     - **Name** : creativ-connect
      - **Environment** : Node
      - **Build Command** : `npm install && npm run build`
      - **Start Command** : `npm start`
      - **Plan** : Free ou Starter
 
 4. **Variables d'environnement** :
+
    - `DATABASE_URL` : URL interne de votre base PostgreSQL
    - `NEXTAUTH_URL` : URL de votre service Render
    - `NEXTAUTH_SECRET` : Secret généré
@@ -115,47 +121,55 @@ Hostinger nécessite une configuration manuelle via SSH.
 ### Étapes
 
 1. **Se connecter en SSH** :
+
    ```bash
    ssh user@votre-serveur.com
    ```
 
 2. **Cloner le repository** :
+
    ```bash
    cd /home/user/public_html
-   git clone <votre-repo> eztwitch
-   cd eztwitch
+   git clone <votre-repo> creativ-connect
+   cd creativ-connect
    ```
 
 3. **Installer les dépendances** :
+
    ```bash
    npm install --production
    ```
 
 4. **Configurer les variables d'environnement** :
+
    ```bash
    nano .env
    # Ajoutez toutes les variables nécessaires
    ```
 
 5. **Build l'application** :
+
    ```bash
    npm run build
    ```
 
 6. **Initialiser la base de données** :
+
    ```bash
    npm run db:push
    ```
 
 7. **Démarrer avec PM2** :
+
    ```bash
    npm install -g pm2
-   pm2 start npm --name "eztwitch" -- start
+   pm2 start npm --name "creativ-connect" -- start
    pm2 save
    pm2 startup
    ```
 
 8. **Configurer Nginx** (reverse proxy) :
+
    ```nginx
    server {
        listen 80;
@@ -177,7 +191,7 @@ Hostinger nécessite une configuration manuelle via SSH.
 ### Créer la base de données
 
 ```sql
-CREATE DATABASE eztwitch;
+CREATE DATABASE creativ_connect;
 ```
 
 ### Exécuter les migrations
@@ -215,26 +229,30 @@ Vercel propose des analytics intégrés. Activez-les dans les paramètres du pro
 
 - **Vercel** : Logs disponibles dans le dashboard
 - **Render** : Logs dans la section Logs du service
-- **Hostinger** : Logs via PM2 : `pm2 logs eztwitch`
+- **Hostinger** : Logs via PM2 : `pm2 logs creativ-connect`
 
 ## 🔄 Mises à jour
 
 ### Vercel
+
 Les mises à jour sont automatiques à chaque push sur la branche principale.
 
 ### Render
+
 Les mises à jour sont automatiques. Pour forcer un redéploiement :
+
 ```bash
 render redeploy
 ```
 
 ### Hostinger
+
 ```bash
-cd /home/user/public_html/eztwitch
+cd /home/user/public_html/creativ-connect
 git pull
 npm install --production
 npm run build
-pm2 restart eztwitch
+pm2 restart creativ-connect
 ```
 
 ## 🐛 Dépannage
@@ -260,7 +278,7 @@ pm2 restart eztwitch
 ## 📞 Support
 
 Pour toute question, consultez :
+
 - Documentation Next.js : [nextjs.org/docs](https://nextjs.org/docs)
 - Documentation Prisma : [prisma.io/docs](https://www.prisma.io/docs)
 - Issues GitHub du projet
-

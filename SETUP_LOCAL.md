@@ -1,4 +1,4 @@
-# Guide de Démarrage Local - EZTWITCH
+# Guide de Démarrage Local - Creativ Connect
 
 ## 📋 Prérequis
 
@@ -9,6 +9,7 @@
 ## 🚀 Étapes de Configuration
 
 ### 1. Installer les dépendances (✅ FAIT)
+
 ```bash
 npm install
 ```
@@ -19,14 +20,15 @@ Créez un fichier `.env` à la racine du projet avec le contenu suivant :
 
 ```env
 # Database
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/eztwitch?schema=public"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/creativ_connect?schema=public"
 
 # NextAuth
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="9eyI6MHOmMAgV4XDd0JwaMd5iVHhtYps/XwvhjrETQg="
 ```
 
-**⚠️ Important :** 
+**⚠️ Important :**
+
 - Remplacez `postgres:postgres` par votre nom d'utilisateur et mot de passe PostgreSQL
 - Si votre PostgreSQL utilise un autre port, modifiez `5432`
 
@@ -35,14 +37,16 @@ NEXTAUTH_SECRET="9eyI6MHOmMAgV4XDd0JwaMd5iVHhtYps/XwvhjrETQg="
 #### Option A : PostgreSQL déjà installé
 
 1. **Créer la base de données** :
+
 ```sql
-CREATE DATABASE eztwitch;
+CREATE DATABASE creativ_connect;
 ```
 
 Ou via la ligne de commande :
+
 ```bash
 psql -U postgres
-CREATE DATABASE eztwitch;
+CREATE DATABASE creativ_connect;
 \q
 ```
 
@@ -53,11 +57,13 @@ CREATE DATABASE eztwitch;
 - **Linux** : `sudo apt-get install postgresql postgresql-contrib`
 
 ### 4. Générer le client Prisma (✅ FAIT)
+
 ```bash
 npm run db:generate
 ```
 
 ### 5. Créer les tables dans la base de données
+
 ```bash
 npm run db:push
 ```
@@ -65,6 +71,7 @@ npm run db:push
 Cette commande va créer toutes les tables nécessaires dans votre base PostgreSQL.
 
 ### 6. Lancer le serveur de développement
+
 ```bash
 npm run dev
 ```
@@ -74,17 +81,21 @@ Le site sera accessible sur : **http://localhost:3000**
 ## 🔧 Commandes Utiles
 
 ### Voir la base de données (Prisma Studio)
+
 ```bash
 npm run db:studio
 ```
+
 Ouvre une interface graphique pour visualiser et modifier les données.
 
 ### Créer une migration
+
 ```bash
 npm run db:migrate
 ```
 
 ### Build pour la production
+
 ```bash
 npm run build
 npm start
@@ -95,19 +106,22 @@ npm start
 ### Erreur : "Can't reach database server"
 
 **Solution :**
+
 1. Vérifiez que PostgreSQL est démarré
 2. Vérifiez les identifiants dans `.env`
 3. Testez la connexion :
+
 ```bash
-psql -U postgres -d eztwitch
+psql -U postgres -d creativ_connect
 ```
 
 ### Erreur : "Database does not exist"
 
 **Solution :**
 Créez la base de données :
+
 ```sql
-CREATE DATABASE eztwitch;
+CREATE DATABASE creativ_connect;
 ```
 
 ### Erreur : "NEXTAUTH_SECRET is not set"
@@ -119,6 +133,7 @@ Vérifiez que le fichier `.env` existe et contient `NEXTAUTH_SECRET`
 
 **Solution :**
 Changez le port dans `package.json` :
+
 ```json
 "dev": "next dev -p 3001"
 ```
@@ -136,7 +151,7 @@ Changez le port dans `package.json` :
 - [ ] npm install exécuté
 - [ ] Fichier `.env` créé avec les bonnes valeurs
 - [ ] PostgreSQL installé et démarré
-- [ ] Base de données `eztwitch` créée
+- [ ] Base de données `creativ_connect` créée
 - [ ] `npm run db:generate` exécuté
 - [ ] `npm run db:push` exécuté
 - [ ] `npm run dev` lancé
@@ -144,5 +159,4 @@ Changez le port dans `package.json` :
 
 ## 🎉 C'est prêt !
 
-Une fois toutes ces étapes complétées, votre site EZTWITCH sera opérationnel en local.
-
+Une fois toutes ces étapes complétées, votre site Creativ Connect sera opérationnel en local.

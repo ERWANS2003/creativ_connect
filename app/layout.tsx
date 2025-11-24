@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'EZTWITCH - Communauté de Créateurs',
+  title: 'Creativ Connect - Communauté de Créateurs',
   description: 'Plateforme pour monteurs vidéo, motion designers, graphistes, designers 3D et sound designers',
 }
 

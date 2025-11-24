@@ -1,6 +1,7 @@
-# 🔧 Configuration PostgreSQL pour EZTWITCH
+# 🔧 Configuration PostgreSQL pour Creativ Connect
 
 ## ❌ Problème actuel
+
 Les identifiants PostgreSQL dans votre `.env` ne fonctionnent pas.
 
 ## ✅ Solutions
@@ -8,36 +9,40 @@ Les identifiants PostgreSQL dans votre `.env` ne fonctionnent pas.
 ### Solution 1 : Installer PostgreSQL (Recommandé)
 
 1. **Télécharger** :
+
    - https://www.postgresql.org/download/windows/
    - Choisissez "Download the installer"
 
 2. **Installer** :
+
    - Suivez l'assistant d'installation
    - **IMPORTANT** : Notez le mot de passe que vous définissez pour `postgres`
    - Port par défaut : `5432` (gardez-le)
 
 3. **Créer la base de données** :
-   
+
    **Méthode A - Via pgAdmin** (Interface graphique) :
+
    - Ouvrez pgAdmin 4
    - Connectez-vous avec votre mot de passe
    - Clic droit sur "Databases" > Create > Database
-   - Nom : `eztwitch`
+   - Nom : `creativ_connect`
    - Cliquez "Save"
 
    **Méthode B - Via ligne de commande** :
+
    ```powershell
    # Trouvez psql (généralement ici) :
    & "C:\Program Files\PostgreSQL\16\bin\psql.exe" -U postgres
    # Entrez votre mot de passe
    # Puis :
-   CREATE DATABASE eztwitch;
+   CREATE DATABASE creativ_connect;
    \q
    ```
 
 4. **Mettre à jour `.env`** :
    ```env
-   DATABASE_URL="postgresql://postgres:VOTRE_MOT_DE_PASSE@localhost:5432/eztwitch?schema=public"
+   DATABASE_URL="postgresql://postgres:VOTRE_MOT_DE_PASSE@localhost:5432/creativ_connect?schema=public"
    ```
    Remplacez `VOTRE_MOT_DE_PASSE` par le mot de passe que vous avez défini.
 
@@ -92,12 +97,15 @@ Si ça fonctionne, vous êtes connecté ! Tapez `\q` pour quitter.
 ## ⚠️ Erreurs courantes
 
 ### "Authentication failed"
+
 ➡️ Le mot de passe dans `.env` est incorrect
 
 ### "Database does not exist"
+
 ➡️ Créez la base avec : `CREATE DATABASE eztwitch;`
 
 ### "Can't reach database server"
-➡️ PostgreSQL n'est pas démarré :
-   - Services Windows > PostgreSQL > Démarrer
 
+➡️ PostgreSQL n'est pas démarré :
+
+- Services Windows > PostgreSQL > Démarrer
